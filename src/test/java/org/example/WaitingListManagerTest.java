@@ -33,6 +33,14 @@ class WaitingListManagerTest {
         waitingListManager.addPerson("Bob");
         assertEquals("Bob",waitingListManager.servePerson());
     }
+
+    @Test
+    void addPersonDuplicateTest() {
+        waitingListManager.addPerson("Bob");
+        waitingListManager.addPerson("Bob");
+        assertEquals(1, waitingListManager.waitingListSize());
+
+    }
     @Test
     void addPersonEmptyNameTest() {
         assertThrows(IllegalArgumentException.class, () -> waitingListManager.addPerson(""));
